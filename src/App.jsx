@@ -1,29 +1,28 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from '../pages/Home'
-import MovieInfo from '../pages/MovieInfo'
-import Movies from '../pages/Movies'
-import Search from '../pages/Search'
-import SerieInfo from '../pages/SerieInfo'
-import Series from '../pages/Series'
-import Trends from '../pages/Trends'
 import './App.css'
+import Home from './components/pages/Home'
+import Movies from './components/pages/Movies'
+import Series from './components/pages/Series'
+import Trends from './components/pages/Trends'
+import MovieInfo from './components/pages/MovieInfo'
+import Header from './components/shared/Header'
+import Search from './components/pages/Search'
+import Loader from './components/pages/Loader'
 
 function App() {
   return (
     <div>
-      <header>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/search' element={<Search />} />
-          <Route path='/trends' element={<Trends />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/series' element={<Series />} />
-          <Route path='/movie/info/:id' element={<MovieInfo />} />
-          <Route path='/serie/info/:id' element={<SerieInfo />} />
-        </Routes>
-      </header>
-
-    </div>
+      <Loader />
+      <Header />
+      <MovieInfo />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/search' element={<Search />} />
+        <Route path='/trends' element={<Trends />} />
+        <Route path='/movies' element={<Movies />} />
+        <Route path='/series' element={<Series />} />
+      </Routes >
+    </div >
 
   )
 }

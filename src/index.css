@@ -1,3 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Enriqueta:wght@400;500;600;700&display=swap');
+
+:root {
+    --first-color: hsl(0, 0%, 100%);
+    --button-color: #f26d00;
+    --button-color-alt: hsl(0, 0%, 40%);
+    --card-color: #ffffff;
+    --title-color: #000000;
+    --text-color: #302c2c;
+    --text-color-light: #bebebe;
+    --body-color: #000000;
+    --container-color: #fff;
+    --border-color: #d00f0f;
+}
+
+.dark-theme {
+    --first-color: hsl(182, 53%, 74%);
+    --button-color: hsl(246, 16%, 12%);
+    --button-color-alt: #474747;
+    --card-color: hsla(246, 16%, 5%, .5);
+    --title-color: hsl(0, 0%, 95%);
+    --text-color: #bfbfbf;
+    --body-color: hsl(249, 19%, 14%);
+    --container-color: hsl(246, 16%, 12%);
+    --border-color: hsl(0, 0%, 20%);
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Enriqueta', serif;
+    background-color: var(--body-color);
+    max-width: 1600px;
+    margin: 0 auto;
+    ;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Mulish', sans-serif;
+}
+
+ul,
+li,
+:link {
+    list-style: none;
+    padding-left: 0;
+    text-decoration: none;
+}
+
 img {
-    width: 50%;
+    display: block;
+    width: 20%;
+}
+
+input {
+    outline: none;
+    font-family: inherit;
+}
+
+button {
+    border: none;
 }

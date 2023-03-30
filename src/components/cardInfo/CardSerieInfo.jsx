@@ -1,59 +1,96 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import YouTube from 'react-youtube';
 
 const CardSerieInfo = () => {
     const urlImage = 'https://image.tmdb.org/t/p/w500'
 
     const [serieInfo, setserieInfo] = useState()
-    const { id } = useParams()
+    const [serieVideo, setserieVideo] = useState()
+    const [play, setplay] = useState(false)
+
+    const { serieInfoSlice } = useSelector(state => state)
 
     useEffect(() => {
-        const urlmovie = `https://api.themoviedb.org/3/tv/${id}?api_key=c3d737df0f14dab49e5201c9bd5a331f&language=es-ES`
+        const url = `https://api.themoviedb.org/3/tv/${serieInfoSlice}?api_key=c3d737df0f14dab49e5201c9bd5a331f&language=en-EN`
 
-        axios.get(urlmovie, id)
+        axios.get(url)
             .then(res => setserieInfo(res.data))
             .catch(err => console.log(err))
-    }, [])
-    return (
-        <div>
-            <header>
-                <div>
-                    <img src={`${urlImage}${serieInfo?.poster_path ? serieInfo?.poster_path : serieInfo?.backdrop_path}`} alt="" />
-                </div>
-                <h1>{serieInfo?.name} <p>{serieInfo?.first_air_date}</p></h1>
-                <div>
-                    <p>{serieInfo?.first_air_date}</p>
-                    {
-                        serieInfo?.production_countries.map(production => (
-                            <ul key={production.iso_3166_1}>
-                                <li>
-                                    ({production.name})
-                                </li>
-                            </ul>
 
-                        ))
+        const urlVideo = `https://api.themoviedb.org/3/tv/${serieInfoSlice}/videos?api_key=c3d737df0f14dab49e5201c9bd5a331f&language=en-EN`
+
+        axios.get(urlVideo)
+            .then(res => setserieVideo(res.data))
+            .catch(err => console.log(err))
+
+    }, [serieInfoSlice])
+
+    const OnclickPlay = () => {
+        setplay(true)
+        if (play === true) {
+            setplay(false)
+        }
+    }
+
+    const idTrailer = serieVideo?.results[0].key
+
+    const validTrailer = () => {
+        if (!idTrailer) {
+            return <span>23</span>
+        } else {
+            return <YouTube className='viedo'
+                opts={{
+                    width: "100%",
+                    height: "100%",
+                    playerVars: {
+                        autoplay: 1,
                     }
+                }}
+                videoId={idTrailer}
+
+            />
+
+        }
+    }
+
+
+    return (
+        <header className='cardInfo__header'>
+            <div className='cardInfo__dateContainer'>
+                <h1 className='cardInfo__h1'>{serieInfo?.name}</h1>
+                <span className='cardInfo__spanDate'>
+                    <div className='cardInfo__voteContainer'>
+                        <button onClick={OnclickPlay}>{!play ? 'Play Trailer' : 'Stop Trailer'}</button>
+                        <span className='cardInfo__vote' > <p>{Math.trunc(serieInfo?.vote_average * 10)}% Match</p> </span>
+                    </div>
+                    <p className='cardInfo__Date'>{serieInfo?.last_air_date}</p>
                     {
                         serieInfo?.genres.map(gender => (
-                            <ul key={gender.id}>
-                                <li>
-                                    {gender.name}
-                                </li>
-                            </ul>
+                            <p className='cardInfo__gender' key={gender.id}>{gender.name}</p>
                         ))
                     }
+                </span>
+            </div>
+            <div className='cardInfo__overviewContainer'>
+                <h2 className='cardInfo__h2'>Overview</h2>
+                <p className='cardInfo__overview'>{serieInfo?.overview}</p>
+            </div>
+
+            {!play ?
+                <div className='cardInfo__imgContainer'>
+                    <span></span>
+                    <p></p>
+                    <img className='cardInfo__img' src={`${urlImage}${serieInfo?.backdrop_path ? serieInfo?.backdrop_path : serieInfo?.poster_path}`} alt="" />
+                </div> :
+                <div className='cardInfo__ConatinerVideo'>
+                    {
+                        validTrailer()
+                    }
                 </div>
-                <div>
-                    <span>{serieInfo?.vote_average}</span>
-                    <p>User <br />Score</p>
-                </div>
-                <div>
-                    <h2>Overview</h2>
-                    <p>{serieInfo?.overview}</p>
-                </div>
-            </header>
-        </div>
+            }
+        </header>
     )
 }
 

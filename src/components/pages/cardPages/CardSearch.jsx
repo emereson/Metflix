@@ -4,38 +4,38 @@ import { setmovieInfo } from '../../../store/slices/movieInfo'
 import { setserieInfo } from '../../../store/slices/serieInfo'
 import { setvalidMoviesOrSeries } from '../../../store/slices/validMoviesOrSeries'
 
-const CardTrending = ({ trending, imgSelected }) => {
+const CardSearch = ({ results, imgSelected }) => {
     const urlImage = 'https://image.tmdb.org/t/p/w500/'
+
 
     const dispatch = useDispatch()
 
-    const styleMovent = {
-        transform: `translateX(calc(-${imgSelected}/1* 100%))`,
-        width: `${trending.length * 100}%`
-    }
-
     const handleClick = () => {
-        if (trending.media_type === "movie") {
-            dispatch(setmovieInfo(trending.id))
+        if (results.media_type === "movie") {
+            dispatch(setmovieInfo(results.id))
             dispatch(setvalidMoviesOrSeries('movie'))
         }
 
-        if (trending.media_type === "tv") {
-            dispatch(setserieInfo(trending.id))
+        if (results.media_type === "tv") {
+            dispatch(setserieInfo(results.id))
             dispatch(setvalidMoviesOrSeries('serie'))
         }
     }
 
-    console.log();
+    const styleMovent = {
+        transform: `translateX(calc(-${imgSelected}/1* 100%))`,
+        width: `${results.length * 100}%`
+    }
+
+
     return (
         <div style={styleMovent} className='allCard__container'>
             <header className='allCard__header' >
                 <div className='allCard__imgContainer'>
-                    <img className='allCard_img' onClick={handleClick} src={`${urlImage}${trending.poster_path ? trending.poster_path : trending.backdrop_path}`} alt="" />
+                    <img onClick={handleClick} className='allCard_img' src={`${urlImage}${results.poster_path ? results.poster_path : results.backdrop_path}`} alt="" />
                 </div>
             </header>
         </div>
     )
 }
-
-export default CardTrending
+export default CardSearch

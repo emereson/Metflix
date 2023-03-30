@@ -1,50 +1,45 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import CardMoviesPopulation from './cardMovies/CardMoviesPopulation'
-import '../pages/stylesPages/allCards.css'
+import CardSeriesOnline from './cardSeries/CardSeriesOnline'
 
-
-const MoviesPopulation = () => {
-    const [moviePopulations, setmoviePopulations] = useState()
+const SeriesOnline = () => {
+    const [seriesOnline, setseriesOnline] = useState()
     const [page, setpage] = useState(1)
     const [imgSelected, setimgSelected] = useState(0)
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/popular?api_key=c3d737df0f14dab49e5201c9bd5a331f&language=en-EN&page=${page}`;
+        const url = `https://api.themoviedb.org/3/tv/on_the_air?api_key=c3d737df0f14dab49e5201c9bd5a331f&language=en-EN&page=1${page}`;
         axios
             .get(url)
-            .then((res) => setmoviePopulations(res.data))
+            .then((res) => setseriesOnline(res.data))
             .catch((err) => console.log(err))
     }, [])
-
 
     const handlePrevius = () => {
         setimgSelected(imgSelected - 1)
         if (imgSelected < 0) {
             setimgSelected(0)
-            setpage(page > 1 ? page - 1 : 1)
         }
     }
     const handleNext = () => {
         setimgSelected(imgSelected + 1)
-        if (imgSelected > 11) {
+        if (imgSelected > 12) {
             setimgSelected(0)
-            setpage(page + 1)
         }
-    }
 
+    }
     return (
         <div className='allDiv__container'>
-            <h2>Popular Movies</h2>
+            <h2>live series</h2>
             <div className='allDiv__movement'>
                 <button onClick={handlePrevius} className='allDiv__btn allDivgbtn__left'>
                     <i className='bx bx-chevron-left' ></i>
                 </button>
                 {
-                    moviePopulations?.results.map(moviePopulation => (
-                        <CardMoviesPopulation
-                            key={moviePopulation.id}
-                            moviePopulation={moviePopulation}
+                    seriesOnline?.results.map(serieOnline => (
+                        <CardSeriesOnline
+                            key={serieOnline.id}
+                            serieOnline={serieOnline}
                             imgSelected={imgSelected}
                         />
                     ))
@@ -57,4 +52,4 @@ const MoviesPopulation = () => {
     )
 }
 
-export default MoviesPopulation
+export default SeriesOnline

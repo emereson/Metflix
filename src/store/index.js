@@ -1,20 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import moviePopulation from "./slices/moviePopulation.slice";
-import seriePopulation from "./slices/seriePopulation.slice";
-import trending from "./slices/trending.slice";
-import tvTopRaited from "./slices/tvTopRaited.slice";
-import movieTopRaited from "./slices/movieTopRaited.slice";
+import serieCategory from "./slices/serieCategory";
 import searchAll from "./slices/searchAll.slice";
-import movieNew from "./slices/movieNew.slice";
+import movieCategory from "./slices/movieCategory";
+import movieInfoSlice from "./slices/movieInfo";
+import serieInfoSlice from "./slices/serieInfo";
+import validMoviesOrSeries from "./slices/validMoviesOrSeries";
 
 export default configureStore({
   reducer: {
-    trending,
-    moviePopulation,
-    seriePopulation,
-    tvTopRaited,
-    movieTopRaited,
+    serieCategory,
     searchAll,
-    movieNew,
+    movieCategory,
+    movieInfoSlice,
+    serieInfoSlice,
+    validMoviesOrSeries,
   },
 });

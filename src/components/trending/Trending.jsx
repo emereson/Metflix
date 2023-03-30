@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import CardTrending from './cardTrending/CardTrending'
+import '../pages/stylesPages/allCards.css'
 
 const Trending = () => {
     const [trendings, settrendings] = useState()
@@ -12,18 +13,44 @@ const Trending = () => {
             .get(url)
             .then((res) => settrendings(res.data))
             .catch((err) => console.log(err))
-    }, [])
-    console.log(trendings);
+    }, [trendings])
+
+    const [imgSelected, setimgSelected] = useState(0)
+
+    const handlePrevius = () => {
+        setimgSelected(imgSelected - 1)
+        if (imgSelected < 0) {
+            setimgSelected(0)
+        }
+    }
+    const handleNext = () => {
+        setimgSelected(imgSelected + 1)
+        if (imgSelected > 12) {
+            setimgSelected(0)
+        }
+
+    }
     return (
-        <div>
-            {
-                trendings?.results.map(trending => (
-                    <CardTrending
-                        key={trending.id}
-                        trending={trending}
-                    />
-                ))
-            }
+        <div className='allDiv__container'>
+            <h2>Trends</h2>
+            <div className='allDiv__movement'>
+                <button onClick={handlePrevius} className='allDiv__btn allDivgbtn__left'>
+                    <i className='bx bx-chevron-left' ></i>
+                </button>
+                {
+                    trendings?.results.map(trending => (
+                        <CardTrending
+                            key={trending.id}
+                            trending={trending}
+                            imgSelected={imgSelected}
+                        />
+                    ))
+                }
+                <button className='allDiv__btn allDivbtn__right'>
+                    <i onClick={handleNext} className='bx bx-chevron-right'></i>
+                </button>
+
+            </div>
         </div>
     )
 }
