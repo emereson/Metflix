@@ -19,6 +19,7 @@
     width: 300vw;
     transition: transform 300ms ease;
     height: 17vw;
+    gap: 0.5vw;
 }
 
 .allCard__header {
@@ -50,12 +51,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3vw;
     font-weight: 1000;
     aspect-ratio: 1;
     border-radius: 50%;
     position: absolute;
-    top: 50%;
+    top: 55%;
     transform: translate(0, -50%);
     cursor: pointer;
     z-index: 1;
@@ -65,7 +65,7 @@
 
 .allDiv__btn:hover {
     filter: brightness(1.05);
-    background-color: rgba(0, 0, 0, 0.504);
+    background-color: rgba(0, 0, 0, 0.851);
 }
 
 .allDivgbtn__left {

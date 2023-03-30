@@ -7,6 +7,7 @@ import SeriesTop from '../series/SeriesTop'
 const Series = () => {
     return (
         <div className='Series__container'>
+            <h2>Series</h2>
             <SeriesGenres />
             <SeriesTop />
             <SeriesOnline />

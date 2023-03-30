@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './stylesPages/Loader.css'
+import ReactHowler from 'react-howler'
+import audio from '/public/netflix.mp3'
+
 
 const Loader = () => {
     const [closeloader, setcloseloader] = useState(true)
@@ -22,7 +25,11 @@ const Loader = () => {
                 </div>
                 <div className="brush3"></div>
             </div>
-
+            <ReactHowler
+                src={audio}
+                playing={true}
+                volume={0.5}
+            />
         </div >
     );
 };

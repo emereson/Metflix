@@ -35,10 +35,10 @@ const Search = () => {
 
     }
 
-    console.log(imgSelected);
 
     return (
         <div className='search__conatiner'>
+            <h2>YOUR RESEARCH</h2>
             <div className='allDiv__container'>
                 <h2>{searchAll}</h2>
                 <div className='allDiv__movement'>

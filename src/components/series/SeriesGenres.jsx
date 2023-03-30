@@ -18,7 +18,7 @@ const SeriesGenres = () => {
             .get(url)
             .then((res) => setSeriesGenres(res.data))
             .catch((err) => console.log(err))
-    }, [SeriesGenres, serieCategory])
+    }, [serieCategory])
 
 
     const handlePrevius = () => {

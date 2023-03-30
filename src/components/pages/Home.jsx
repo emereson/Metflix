@@ -1,7 +1,6 @@
 import React from 'react'
 import MoviesTop from '../movies/MoviesTop'
 import MoviesPopulation from '../movies/MoviesPopulation'
-import Trending from '../trending/Trending'
 import SeriesTop from '../series/SeriesTop'
 import SeriesPopulation from '../series/SeriesPopulation'
 
@@ -9,7 +8,7 @@ import SeriesPopulation from '../series/SeriesPopulation'
 const Home = () => {
     return (
         <div className='Container__home'>
-            <Trending />
+            <h2>Home</h2>
             <MoviesPopulation />
             <SeriesPopulation />
             <MoviesTop />

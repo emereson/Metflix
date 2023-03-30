@@ -13,7 +13,7 @@ const Trending = () => {
             .get(url)
             .then((res) => settrendings(res.data))
             .catch((err) => console.log(err))
-    }, [trendings])
+    }, [])
 
     const [imgSelected, setimgSelected] = useState(0)
 

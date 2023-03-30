@@ -9,6 +9,7 @@ import MoviesTop from '../movies/MoviesTop'
 const Movies = () => {
     return (
         <div className='movies__container'>
+            <h2>Movies</h2>
             <MoviesGenres />
             <MoviesTheaters />
             <MoviesAnime />
