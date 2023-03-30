@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './stylesPages/Loader.css'
 import ReactHowler from 'react-howler'
-import audio from '/public/netflix.mp3'
+import audio from '/netflix.mp3'
 
 
 const Loader = () => {

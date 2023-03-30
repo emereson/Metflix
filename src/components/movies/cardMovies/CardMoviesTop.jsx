@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setmovieInfo } from '../../../store/slices/movieInfo'
 import { setvalidMoviesOrSeries } from '../../../store/slices/validMoviesOrSeries'
-import audio from '/public/movement.mp3'
+import audio from '/movement.mp3'
 import ReactHowler from 'react-howler'
 
 

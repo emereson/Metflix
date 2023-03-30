@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { setmovieInfo } from '../../../store/slices/movieInfo'
 import { setserieInfo } from '../../../store/slices/serieInfo'
 import { setvalidMoviesOrSeries } from '../../../store/slices/validMoviesOrSeries'
-import audio from '/public/movement.mp3'
+import audio from '/movement.mp3'
 import ReactHowler from 'react-howler'
 
 const CardTrending = ({ trending, imgSelected }) => {
