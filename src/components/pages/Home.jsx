@@ -10,9 +10,9 @@ const Home = () => {
         <div className='Container__home'>
             <h2>Home</h2>
             <MoviesPopulation />
-            <SeriesPopulation />
             <MoviesTop />
             <SeriesTop />
+            <SeriesPopulation />
         </div>
     )
 }

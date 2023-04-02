@@ -35,11 +35,10 @@ const CardMovieInfo = () => {
         }
     }
 
-    const idTrailer = movieVideo?.results[0].key
 
     const validTrailer = () => {
-        if (idTrailer === undefined) {
-            return <span>No Trailer</span>
+        if (!movieVideo.results[0].key) {
+            return setplay(off)
         } else {
             return <YouTube className='viedo'
                 opts={{
@@ -49,8 +48,7 @@ const CardMovieInfo = () => {
                         autoplay: 1
                     }
                 }}
-                videoId={idTrailer}
-            />
+                videoId={movieVideo?.results[0].key} />
         }
     }
 

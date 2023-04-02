@@ -34,24 +34,21 @@ const CardSerieInfo = () => {
         }
     }
 
-    const idTrailer = serieVideo?.results[0].key
+    // const idTrailer = serieVideo?.results[0].key
 
     const validTrailer = () => {
-        if (!idTrailer) {
-            return <span>23</span>
+        if (!serieVideo.results[0].key) {
+            return setplay(off)
         } else {
             return <YouTube className='viedo'
                 opts={{
                     width: "100%",
                     height: "100%",
                     playerVars: {
-                        autoplay: 1,
+                        autoplay: 1
                     }
                 }}
-                videoId={idTrailer}
-
-            />
-
+                videoId={serieVideo?.results[0].key} />
         }
     }
 
