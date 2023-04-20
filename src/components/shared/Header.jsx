@@ -71,7 +71,7 @@ const Header = () => {
     }
 
     return (
-        <div>
+        <div className='all__containerHeader'>
             <h1 className='nav_title'>
                 <Link className='link__title' to='/'>NETFLYX</Link>
             </h1>
@@ -87,7 +87,7 @@ const Header = () => {
                     </li>
                     <li ><Link className='nav__link' to='/'> <i className='bx bx-home-alt' ></i> <h2> Home</h2> </Link></li>
                     <li ><Link className='nav__link' to='/trends'><i className='bx bx-trending-up'></i><h2> Tendencias</h2> </Link></li>
-                    <li >
+                    <li className='li_movie'>
                         <Link className='nav__link' to='/movies'>
                             <i className='bx bx-movie' ></i>
                             <h2> Peliculas</h2>

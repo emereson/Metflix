@@ -1,6 +1,6 @@
 .nav__header {
     position: fixed;
-    width: 4.2vw;
+    width: 4vw;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -152,5 +152,4 @@ h2 {
     .nav__ul {
         margin-left: 0.5em;
     }
-
 }

@@ -12,6 +12,10 @@ import Loader from './components/pages/Loader'
 function App() {
   return (
     <div>
+      <div className='rotate__pantalla'>
+        <h1>rotate the screen to view the page</h1>
+        <i className='bx bx-rotate-right'></i>
+      </div>
       <Loader />
       <Header />
       <MovieInfo />
